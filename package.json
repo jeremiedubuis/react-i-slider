@@ -1,0 +1,43 @@
+{
+    "name": "react-i-slider",
+    "version": "0.0.0",
+    "description": "",
+    "main": "dist/index.cjs.js",
+    "module": "dist/index.esm.js",
+    "types": "dist/index.d.ts",
+    "files": [
+        "dist/**/*"
+    ],
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "rollup -c rollup.example.js -w",
+        "build": "rollup -c rollup.config.js",
+        "prepublishOnly": "npm run build",
+        "prettier": "prettier --config ./.prettierrc --write \"**/*.?(ts|tsx|js|jsx|?(s)css|json)\""
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/jeremiedubuis/wc-carousel.git"
+    },
+    "author": "Jérémie Dubuis",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/jeremiedubuis/wc-carousel/issues"
+    },
+    "homepage": "https://github.com/jeremiedubuis/wc-carousel#readme",
+    "devDependencies": {
+        "@rollup/plugin-commonjs": "^15.0.0",
+        "@rollup/plugin-node-resolve": "^9.0.0",
+        "@types/react": "^16.9.49",
+        "prettier": "^2.1.1",
+        "rollup": "^2.26.8",
+        "rollup-plugin-terser": "^7.0.1",
+        "rollup-plugin-typescript2": "^0.27.2",
+        "tslib": "^2.0.1",
+        "typescript": "^4.0.2"
+    },
+    "dependencies": {
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1"
+    }
+}

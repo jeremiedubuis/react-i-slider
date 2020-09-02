@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>react-i-slider</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        .react-i-slider {
+            position: relative;
+            padding: 0 40px;
+        }
+
+        .react-i-slider ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .react-i-slider-prev,
+        .react-i-slider-next{
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+        }
+
+        .react-i-slider-prev {
+            left: 0;
+        }
+
+        .react-i-slider-next {
+            right: 0;
+        }
+
+        .react-i-slider-list {
+            transition: all ease-in;
+        }
+
+        .react-i-slider-list > ul {
+            position: relative;
+        }
+        .react-i-slider-list > ul > li {
+            display: inline-block;
+        }
+
+        .react-i-slider-pager {
+            text-align: center;
+        }
+
+        .react-i-slider-pager li {
+            display: inline-block;
+            margin: 0 5px;
+        }
+
+        .react-i-slider-pager button {
+            padding: 0;
+            outline: 0;
+            border: 0;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: grey;
+            cursor: pointer;
+        }
+
+        .react-i-slider-pager .is-active {
+            background: black;
+         }
+
+        .test {
+            box-sizing: border-box;
+            padding: 10px;
+        }
+
+
+        img {
+            width: 100%;
+        }
+
+        .visually-hidden {
+            clip: rect(0 0 0 0);
+            clip-path: inset(50%);
+            height: 1px;
+            overflow: hidden;
+            position: absolute;
+            white-space: nowrap;
+            width: 1px;
+        }
+
+    </style>
+</head>
+<body>
+
+<div id="slider1"></div>
+
+<script src="./examples.js"></script>
+</body>
+</html>
