@@ -139,7 +139,7 @@ export class ReactISliderList extends React.Component<
                 key={i}
                 role="group"
                 aria-roledescription="slide"
-                aria-label={this.props.renderSlideAriaLabel(label, children)}
+                aria-label={this.props.renderSlideAriaLabel(label, children.length)}
                 style={{ width: this.state.slideSize }}
                 ref={(ref) => (this.slides[i] = ref)}
             >
