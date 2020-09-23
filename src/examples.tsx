@@ -12,8 +12,9 @@ const Slider = () => {
             <ReactISlider
                 maxSlides={maxSlides}
                 moveSlides={moveSlides}
-                infinite={true}
+                infinite={false}
                 overflow={overflow}
+                enableMouseSwipe={true}
             >
                 <div className="test">
                     <img src="https://picsum.photos/id/1018/200/300" alt="" />

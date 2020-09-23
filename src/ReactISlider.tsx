@@ -17,6 +17,7 @@ type ReactISliderProps = {
     maxSlides?: number;
     moveSlides?: number;
     next?: string | ReactNode;
+    onSlideChange?: Function;
     overflow?: boolean;
     pager?: boolean;
     prev?: string | ReactNode;
@@ -214,8 +215,10 @@ export class ReactISlider extends React.Component<ReactISliderProps, ReactISlide
                       )
 
             },
-            // @ts-ignore
-            cb
+            () => {
+                if (typeof cb === 'function') cb();
+                if (typeof this.props.onSlideChange === 'function') this.props.onSlideChange(this.state.activeSlide);
+            }
         );
 
     public offsetSlide = (offset, cb?: Function) => this.setSlide(this.state.activeSlide + offset, cb);

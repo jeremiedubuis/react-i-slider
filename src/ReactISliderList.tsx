@@ -82,7 +82,8 @@ export class ReactISliderList extends React.Component<
 
         if (this.props.activeSlide !== prevProps.activeSlide) {
             this.animating = this.state.animate;
-            this.setPosition();
+            const [ newPosition, prevPosition] = this.setPosition();
+            if(newPosition === prevPosition) this.onTransitionEnd();
         }
     }
 
@@ -180,12 +181,15 @@ export class ReactISliderList extends React.Component<
     }
 
     setPosition() {
+        const prevPosition = this.ulRef.current.style[axisToPositionAttribute(this.props.axis)];
         const offset = this.props.infinite
             ? -this.props.getChildrenNumber() * this.state.slideSize
             : 0;
-        this.ulRef.current.style[axisToPositionAttribute(this.props.axis)] = `${
+        const newPosition = `${
             offset - this.props.activeSlide * this.state.slideSize
         }px`;
+        this.ulRef.current.style[axisToPositionAttribute(this.props.axis)] = newPosition;
+        return [ newPosition, prevPosition ]
     }
 
     onTransitionEnd = () => {
@@ -231,9 +235,11 @@ export class ReactISliderList extends React.Component<
         const pointerCoords = e.touches
             ? e.touches[0][axisToEventPage(this.props.axis)]
             : e[axisToEventPage(this.props.axis)];
-        this.ulRef.current.style[positionAttribute] = `${
-            currentPosition - (this.pointerCoords - pointerCoords)
-        }px`;
+
+        let position = currentPosition - (this.pointerCoords - pointerCoords);
+        if (!this.props.infinite) position = Math.min(0, Math.max(position, -(this.props.getChildrenNumber()*this.state.slideSize - this.props.maxSlides * this.state.slideSize)) );
+
+        this.ulRef.current.style[positionAttribute] = `${position}px`;
         this.pointerCoords = pointerCoords;
     };
 

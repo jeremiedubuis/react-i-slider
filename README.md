@@ -29,6 +29,7 @@ $ npm install react-i-slider --save
     maxSlides?: number;
     moveSlides?: number;
     next?: string | ReactNode;
+    onSlideChange?: Function;
     overflow?: boolean;
     pager?: boolean;
     prev?: string | ReactNode;
