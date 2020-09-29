@@ -65,9 +65,11 @@ export class ReactISliderList extends React.Component<
         if (window.matchMedia('(any-pointer: coarse)').matches) {
             window.addEventListener('touchmove', this.onPointerMove);
             window.addEventListener('touchend', this.onPointerUp);
+            this.ref.current.addEventListener('touchstart', this.onPointerDown, { passive: false });
         } else if (this.props.enableMouseSwipe) {
             window.addEventListener('mousemove', this.onPointerMove);
             window.addEventListener('mouseup', this.onPointerUp);
+            this.ref.current.addEventListener('mousedown', this.onPointerDown, { passive: false });
         }
     }
 
@@ -90,6 +92,15 @@ export class ReactISliderList extends React.Component<
     componentWillUnmount() {
         window.removeEventListener('resize', this.resize);
         this.ulRef.current.removeEventListener('animationend', this.onTransitionEnd);
+        if (window.matchMedia('(any-pointer: coarse)').matches) {
+            window.removeEventListener('touchmove', this.onPointerMove);
+            window.removeEventListener('touchend', this.onPointerUp);
+            this.ref.current.removeEventListener('touchstart', this.onPointerDown);
+        } else if (this.props.enableMouseSwipe) {
+            window.removeEventListener('mousemove', this.onPointerMove);
+            window.removeEventListener('mouseup', this.onPointerUp);
+            this.ref.current.removeEventListener('mousedown', this.onPointerDown);
+        }
     }
 
     render() {
@@ -101,10 +112,8 @@ export class ReactISliderList extends React.Component<
                 className={`${libClassName}-list`}
                 aria-live={this.props.auto ? 'off' : 'polite'}
                 ref={this.ref}
-                onTouchStart={this.onPointerDown}
                 onDragStart={this.preventDefault}
                 onDrop={this.preventDefault}
-                onMouseDown={this.props.enableMouseSwipe ? this.onPointerDown : null}
                 style={{
                     overflow: this.props.overflow ? null : 'hidden'
                 }}
