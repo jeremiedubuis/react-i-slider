@@ -65,11 +65,11 @@ export class ReactISliderList extends React.Component<
         if (window.matchMedia('(any-pointer: coarse)').matches) {
             window.addEventListener('touchmove', this.onPointerMove);
             window.addEventListener('touchend', this.onPointerUp);
-            this.ref.current.addEventListener('touchstart', this.onPointerDown, { passive: false });
+            this.ref.current.addEventListener('touchstart', this.onPointerDown);
         } else if (this.props.enableMouseSwipe) {
             window.addEventListener('mousemove', this.onPointerMove);
             window.addEventListener('mouseup', this.onPointerUp);
-            this.ref.current.addEventListener('mousedown', this.onPointerDown, { passive: false });
+            this.ref.current.addEventListener('mousedown', this.onPointerDown);
         }
     }
 
@@ -228,7 +228,6 @@ export class ReactISliderList extends React.Component<
 
     onPointerDown = (e) => {
         if (this.animating) return;
-        e.preventDefault();
         this.props.clearAutoTimeout();
         this.pointerDown = true;
         this.initialPointerCoords = this.pointerCoords = e.touches
