@@ -3,7 +3,7 @@ import { libClassName } from './helpers/configuration';
 import { ReactISliderList } from './ReactISliderList';
 import { Axis } from './types';
 
-type ReactISliderProps = {
+export type ReactISliderProps = {
     activeSlide?: number;
     ariaLabel?: string;
     arrows?: boolean;
@@ -17,7 +17,7 @@ type ReactISliderProps = {
     maxSlides?: number;
     moveSlides?: number;
     next?: string | ReactNode;
-    onSlideChange?: Function;
+    onSlideChange?: (activeSlide: number, totalSlides: number) => void;
     overflow?: boolean;
     pager?: boolean;
     prev?: string | ReactNode;
@@ -204,22 +204,24 @@ export class ReactISlider extends React.Component<ReactISliderProps, ReactISlide
         this.setSlide(page * this.props.moveSlides);
     };
 
-    public setSlide = (activeSlide: number, cb?: Function) =>
+    public setSlide = (activeSlide: number, cb?: Function) => {
+        const max = this.getChildrenNumber();
         this.setState(
             {
                 activeSlide: this.props.infinite
                     ? activeSlide
                     : Math.min(
                           Math.max(activeSlide, 0),
-                          this.getChildrenNumber() - this.props.maxSlides
+                        max - this.props.maxSlides
                       )
 
             },
             () => {
                 if (typeof cb === 'function') cb();
-                if (typeof this.props.onSlideChange === 'function') this.props.onSlideChange(this.state.activeSlide);
+                if (typeof this.props.onSlideChange === 'function') this.props.onSlideChange(this.state.activeSlide % max, max);
             }
         );
+    }
 
     public offsetSlide = (offset, cb?: Function) => this.setSlide(this.state.activeSlide + offset, cb);
 

@@ -12,9 +12,10 @@ const Slider = () => {
             <ReactISlider
                 maxSlides={maxSlides}
                 moveSlides={moveSlides}
-                infinite={false}
+                infinite={true}
                 overflow={overflow}
                 enableMouseSwipe={true}
+                onSlideChange={(active) => console.log(active)}
             >
                 <div className="test">
                     <img src="https://picsum.photos/id/1018/200/300" alt="" />
@@ -70,7 +71,7 @@ const Slider = () => {
                 </div>
             </fieldset>
 
-            <ReactISlider maxSlides={1} moveSlides={1} infinite={true} overflow={false} auto={true}>
+            <ReactISlider maxSlides={1} moveSlides={1} infinite={true} overflow={false} auto={false}>
                 <div className="test">
                     <img src="https://picsum.photos/id/1018/200/300" alt="" />
                 </div>
