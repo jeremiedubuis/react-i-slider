@@ -218,7 +218,10 @@ export class ReactISlider extends React.Component<ReactISliderProps, ReactISlide
             },
             () => {
                 if (typeof cb === 'function') cb();
-                if (typeof this.props.onSlideChange === 'function') this.props.onSlideChange(this.state.activeSlide % max, max);
+                if (typeof this.props.onSlideChange === 'function') this.props.onSlideChange(
+                    this.state.activeSlide >= 0 ? this.state.activeSlide % max : max + this.state.activeSlide,
+                    max
+                );
             }
         );
     }
