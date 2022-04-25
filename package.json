@@ -22,9 +22,9 @@
     "author": "Jérémie Dubuis",
     "license": "ISC",
     "bugs": {
-        "url": "https://github.com/jeremiedubuis/wc-carousel/issues"
+        "url": "https://github.com/jeremiedubuis/react-i-slider/issues"
     },
-    "homepage": "https://github.com/jeremiedubuis/wc-carousel#readme",
+    "homepage": "https://github.com/jeremiedubuis/react-i-slider#readme",
     "devDependencies": {
         "@rollup/plugin-commonjs": "^15.0.0",
         "@rollup/plugin-node-resolve": "^9.0.0",
