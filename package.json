@@ -25,6 +25,14 @@
         "url": "https://github.com/jeremiedubuis/react-i-slider/issues"
     },
     "homepage": "https://github.com/jeremiedubuis/react-i-slider#readme",
+    "dependencies": {
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1"
+    },
+    "peerDependencies": {
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1"
+    },
     "devDependencies": {
         "@rollup/plugin-commonjs": "^15.0.0",
         "@rollup/plugin-node-resolve": "^9.0.0",
@@ -33,16 +41,8 @@
         "rollup": "^2.26.8",
         "rollup-plugin-peer-deps-external": "^2.2.4",
         "rollup-plugin-terser": "^7.0.1",
-        "rollup-plugin-typescript2": "^0.27.2",
+        "rollup-plugin-typescript2": "^0.34.1",
         "tslib": "^2.0.1",
         "typescript": "^4.0.2"
-    },
-    "dependencies": {
-        "react": "^16.13.1",
-        "react-dom": "^16.13.1"
-    },
-    "peerDependencies": {
-        "react": "^16.13.1",
-        "react-dom": "^16.13.1"
     }
 }
