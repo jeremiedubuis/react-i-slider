@@ -25,10 +25,6 @@
         "url": "https://github.com/jeremiedubuis/react-i-slider/issues"
     },
     "homepage": "https://github.com/jeremiedubuis/react-i-slider#readme",
-    "dependencies": {
-        "react": "^16.13.1",
-        "react-dom": "^16.13.1"
-    },
     "peerDependencies": {
         "react": "^16.13.1",
         "react-dom": "^16.13.1"
