@@ -21,7 +21,7 @@ export type ReactISliderProps = {
     overflow?: boolean;
     pager?: boolean;
     prev?: string | ReactNode;
-    renderPager?: Function;
+    renderPager?: (page: number, pages: number) => ReactNode | ReactNode[];
     renderSlideAriaLabel?: () => string;
     style?: object;
     swipeThreshold?: number;
@@ -53,7 +53,7 @@ export class ReactISlider extends React.Component<ReactISliderProps, ReactISlide
                 &lt;<span className="visually-hidden">Previous</span>
             </>
         ),
-        renderPager: (page, active, pages) => (
+        renderPager: (page,  pages) => (
             <>
                 <span className="visually-hidden">
                     Page {page} / ${pages}
@@ -146,10 +146,9 @@ export class ReactISlider extends React.Component<ReactISliderProps, ReactISlide
                     </button>
                 )}
 
-                {this.props.pager && (
+                {this.props.pager && pages > 1 && (
                     <ul className={`${libClassName}-pager`}>
-                        {pages < 1 &&
-                            [...Array(pages)].map((_, i) => (
+                        {[...Array(pages)].map((_, i) => (
                                 <li key={i}>
                                     <button
                                         aria-controls={this.props.id}
